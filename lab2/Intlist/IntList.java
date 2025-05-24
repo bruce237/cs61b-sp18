@@ -82,7 +82,13 @@ public class IntList {
 
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        if(A == null){
+            return B;
+        }
+        else{
+            A.rest = dcatenate(A.rest,B);
+            return A;
+        }
     }
 
     /**
@@ -91,7 +97,24 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
+        //如果A是null，b也是null，return null
+        //如果B ！= null 创造一个和B一样的返回
+        if(A == null){
+            if(B == null){
+                return null;
+            }
+            else{
+                IntList temp = new IntList(B.first,null);
+                temp.rest = catenate(null,B.rest);
+                return temp;
+            }
+        }
+        else{
+            //A不是null,创建一个新的把A复制过来，
+            IntList temp = new IntList(A.first,null);
+            temp.rest = catenate(A.rest,B);
+            return temp;
+        }
     }
 
 
